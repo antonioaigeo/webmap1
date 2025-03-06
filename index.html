@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6024c1d3fdd09f8141401c025ea713d5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumpopup {
+                            margin: auto;
+                        }
+                       .foliumpopup table{
+                            margin: auto;
+                        }
+                        .foliumpopup tr{
+                            text-align: left;
+                        }
+                        .foliumpopup th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+    
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>$( function() {
+        $( ".maplegend" ).draggable({
+            start: function (event, ui) {
+                $(this).css({
+                    right: "auto",
+                    top: "auto",
+                    bottom: "auto"
+                });
+            }
+        });
+    });
+    </script>
+    <style type='text/css'>
+      .maplegend {
+        position: absolute;
+        z-index:9999;
+        background-color: rgba(255, 255, 255, .8);
+        border-radius: 5px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        padding: 10px;
+        font: 12px/14px Arial, Helvetica, sans-serif;
+        right: 10px;
+        bottom: 20px;
+      }
+      .maplegend .legend-title {
+        text-align: left;
+        margin-bottom: 5px;
+        font-weight: bold;
+        }
+      .maplegend .legend-scale ul {
+        margin: 0;
+        margin-bottom: 0px;
+        padding: 0;
+        float: left;
+        list-style: none;
+        }
+      .maplegend .legend-scale ul li {
+        list-style: none;
+        margin-left: 0;
+        line-height: 16px;
+        margin-bottom: 2px;
+        }
+      .maplegend ul.legend-labels li span {
+        display: block;
+        float: left;
+        height: 14px;
+        width: 14px;
+        margin-right: 5px;
+        margin-left: 0;
+        border: 0px solid #ccc;
+        }
+      .maplegend .legend-source {
+        color: #777;
+        clear: both;
+        }
+      .maplegend a {
+        color: #777;
+        }
+    </style>
+    
+</head>
+<body>
+    
+    
+    <div id='maplegend Tipo' class='maplegend'>
+        <div class='legend-title'>Tipo</div>
+        <div class='legend-scale'>
+            <ul class='legend-labels'>
+                <li><span style='background:Blue'></span>Destino</li>
+                <li><span style='background:Green'></span>Origem</li>
+            </ul>
+        </div>
+    </div>
+    
+    
+             <h3 align="center" style="font-size:20px"><b>MEU WEBGIS</b></h3>
+             
+    
+            <div class="folium-map" id="map_6024c1d3fdd09f8141401c025ea713d5" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6024c1d3fdd09f8141401c025ea713d5 = L.map(
+                "map_6024c1d3fdd09f8141401c025ea713d5",
+                {
+                    center: [-9.609676031802014, -48.529505598509935],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_6024c1d3fdd09f8141401c025ea713d5);
+
+            
+
+        
+    
+            var tile_layer_ac16e42113fecbf73ce552aecc9b5778 = L.tileLayer(
+                "https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ac16e42113fecbf73ce552aecc9b5778.addTo(map_6024c1d3fdd09f8141401c025ea713d5);
+        
+    
+            map_6024c1d3fdd09f8141401c025ea713d5.fitBounds(
+                [[-13.000882939084418, -50.223765085966406], [-6.218469124519611, -46.835246111053465]],
+                {}
+            );
+        
+    
+        function geo_json_7dd1999efa86b815ed90350696f6468d_styler(feature) {
+            switch(feature.id) {
+                case "0": case "26": case "45": case "49": case "62": 
+                    return {"color": "Blue", "fillColor": "Blue", "fillOpacity": 0.5, "weight": 2};
+                default:
+                    return {"color": "Green", "fillColor": "Green", "fillOpacity": 0.5, "weight": 2};
+            }
+        }
+        function geo_json_7dd1999efa86b815ed90350696f6468d_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_7dd1999efa86b815ed90350696f6468d_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3};
+            
+            let style = geo_json_7dd1999efa86b815ed90350696f6468d_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_7dd1999efa86b815ed90350696f6468d_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_7dd1999efa86b815ed90350696f6468d.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_7dd1999efa86b815ed90350696f6468d_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_7dd1999efa86b815ed90350696f6468d = L.geoJson(null, {
+                onEachFeature: geo_json_7dd1999efa86b815ed90350696f6468d_onEachFeature,
+            
+                style: geo_json_7dd1999efa86b815ed90350696f6468d_styler,
+                pointToLayer: geo_json_7dd1999efa86b815ed90350696f6468d_pointToLayer,
+            ...{
+}
+        });
+
+        function geo_json_7dd1999efa86b815ed90350696f6468d_add (data) {
+            geo_json_7dd1999efa86b815ed90350696f6468d
+                .addData(data);
+        }
+            geo_json_7dd1999efa86b815ed90350696f6468d_add({"bbox": [-50.223765085966406, -13.000882939084418, -46.835246111053465, -6.218469124519611], "features": [{"bbox": [-48.51227658872049, -7.376548802908585, -48.51227658872049, -7.376548802908585], "geometry": {"coordinates": [-48.51227658872049, -7.376548802908585], "type": "Point"}, "id": "0", "properties": {"Tipo": "Destino", "__folium_color": "Blue", "id": null}, "type": "Feature"}, {"bbox": [-48.18888830117037, -6.218469124519611, -48.18888830117037, -6.218469124519611], "geometry": {"coordinates": [-48.18888830117037, -6.218469124519611], "type": "Point"}, "id": "1", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.87642529360503, -6.399828772267319, -47.87642529360503, -6.399828772267319], "geometry": {"coordinates": [-47.87642529360503, -6.399828772267319], "type": "Point"}, "id": "2", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.678340844489476, -6.891466371583393, -48.678340844489476, -6.891466371583393], "geometry": {"coordinates": [-48.678340844489476, -6.891466371583393], "type": "Point"}, "id": "3", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.51446164471745, -6.856505475632027, -48.51446164471745, -6.856505475632027], "geometry": {"coordinates": [-48.51446164471745, -6.856505475632027], "type": "Point"}, "id": "4", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.024672220007766, -7.67480894649366, -49.024672220007766, -7.67480894649366], "geometry": {"coordinates": [-49.024672220007766, -7.67480894649366], "type": "Point"}, "id": "5", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.85894484562937, -7.241075331097045, -47.85894484562937, -7.241075331097045], "geometry": {"coordinates": [-47.85894484562937, -7.241075331097045], "type": "Point"}, "id": "6", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.64775006053204, -7.892222018191223, -48.64775006053204, -7.892222018191223], "geometry": {"coordinates": [-48.64775006053204, -7.892222018191223], "type": "Point"}, "id": "7", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.96676823608825, -8.01240009802404, -48.96676823608825, -8.01240009802404], "geometry": {"coordinates": [-48.96676823608825, -8.01240009802404], "type": "Point"}, "id": "8", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.89718332557618, -9.041561472592353, -47.89718332557618, -9.041561472592353], "geometry": {"coordinates": [-47.89718332557618, -9.041561472592353], "type": "Point"}, "id": "9", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-46.835246111053465, -8.28553209764408, -46.835246111053465, -8.28553209764408], "geometry": {"coordinates": [-46.835246111053465, -8.28553209764408], "type": "Point"}, "id": "10", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.69834322985281, -8.532443425300595, -47.69834322985281, -8.532443425300595], "geometry": {"coordinates": [-47.69834322985281, -8.532443425300595], "type": "Point"}, "id": "11", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.47109740616893, -8.235275809713992, -47.47109740616893, -8.235275809713992], "geometry": {"coordinates": [-47.47109740616893, -8.235275809713992], "type": "Point"}, "id": "12", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.1725003811932, -7.949033474112189, -48.1725003811932, -7.949033474112189], "geometry": {"coordinates": [-48.1725003811932, -7.949033474112189], "type": "Point"}, "id": "13", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.572365628636945, -8.10198739389941, -48.572365628636945, -8.10198739389941], "geometry": {"coordinates": [-48.572365628636945, -8.10198739389941], "type": "Point"}, "id": "14", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.36915542091963, -7.682456642483029, -48.36915542091963, -7.682456642483029], "geometry": {"coordinates": [-48.36915542091963, -7.682456642483029], "type": "Point"}, "id": "15", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.24023711709897, -6.730864755806812, -48.24023711709897, -6.730864755806812], "geometry": {"coordinates": [-48.24023711709897, -6.730864755806812], "type": "Point"}, "id": "16", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.44563238081324, -6.583373476011991, -48.44563238081324, -6.583373476011991], "geometry": {"coordinates": [-48.44563238081324, -6.583373476011991], "type": "Point"}, "id": "17", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.77700524574338, -6.454455172191333, -47.77700524574338, -6.454455172191333], "geometry": {"coordinates": [-47.77700524574338, -6.454455172191333], "type": "Point"}, "id": "18", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.09459401191045, -8.119467841875094, -49.09459401191045, -8.119467841875094], "geometry": {"coordinates": [-49.09459401191045, -8.119467841875094], "type": "Point"}, "id": "19", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.959120540098915, -7.5338728346897295, -48.959120540098915, -7.5338728346897295], "geometry": {"coordinates": [-48.959120540098915, -7.5338728346897295], "type": "Point"}, "id": "20", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.037026909381666, -6.830284803668504, -48.037026909381666, -6.830284803668504], "geometry": {"coordinates": [-48.037026909381666, -6.830284803668504], "type": "Point"}, "id": "21", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.035051235993315, -7.130183739251305, -49.035051235993315, -7.130183739251305], "geometry": {"coordinates": [-49.035051235993315, -7.130183739251305], "type": "Point"}, "id": "22", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.80343530031552, -6.989247627447365, -48.80343530031552, -6.989247627447365], "geometry": {"coordinates": [-48.80343530031552, -6.989247627447365], "type": "Point"}, "id": "23", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.374618060912056, -7.02366225939949, -48.374618060912056, -7.02366225939949], "geometry": {"coordinates": [-48.374618060912056, -7.02366225939949], "type": "Point"}, "id": "24", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.864826250838995, -10.287043390859717, -49.864826250838995, -10.287043390859717], "geometry": {"coordinates": [-49.864826250838995, -10.287043390859717], "type": "Point"}, "id": "25", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.55051506866738, -9.732039167631791, -48.55051506866738, -9.732039167631791], "geometry": {"coordinates": [-48.55051506866738, -9.732039167631791], "type": "Point"}, "id": "26", "properties": {"Tipo": "Destino", "__folium_color": "Blue", "id": null}, "type": "Feature"}, {"bbox": [-48.15939004521148, -9.662117375729062, -48.15939004521148, -9.662117375729062], "geometry": {"coordinates": [-48.15939004521148, -9.662117375729062], "type": "Point"}, "id": "27", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.53446403008083, -9.736409279625713, -47.53446403008083, -9.736409279625713], "geometry": {"coordinates": [-47.53446403008083, -9.736409279625713], "type": "Point"}, "id": "28", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.11056316667053, -8.74876396899965, -47.11056316667053, -8.74876396899965], "geometry": {"coordinates": [-47.11056316667053, -8.74876396899965], "type": "Point"}, "id": "29", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.460927772792004, -8.809945536914539, -48.460927772792004, -8.809945536914539], "geometry": {"coordinates": [-48.460927772792004, -8.809945536914539], "type": "Point"}, "id": "30", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.972230876080715, -8.560849153261064, -48.972230876080715, -8.560849153261064], "geometry": {"coordinates": [-48.972230876080715, -8.560849153261064], "type": "Point"}, "id": "31", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.95912054009896, -8.941048896732157, -48.95912054009896, -8.941048896732157], "geometry": {"coordinates": [-48.95912054009896, -8.941048896732157], "type": "Point"}, "id": "32", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.08148367592873, -9.220736064343079, -49.08148367592873, -9.220736064343079], "geometry": {"coordinates": [-49.08148367592873, -9.220736064343079], "type": "Point"}, "id": "33", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.050892891971294, -10.044502175197117, -49.050892891971294, -10.044502175197117], "geometry": {"coordinates": [-49.050892891971294, -10.044502175197117], "type": "Point"}, "id": "34", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.18418130778587, -10.190900926993457, -49.18418130778587, -10.190900926993457], "geometry": {"coordinates": [-49.18418130778587, -10.190900926993457], "type": "Point"}, "id": "35", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.83457234827222, -10.252082494908343, -48.83457234827222, -10.252082494908343], "geometry": {"coordinates": [-48.83457234827222, -10.252082494908343], "type": "Point"}, "id": "36", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.01954646140602, -9.249141792303558, -48.01954646140602, -9.249141792303558], "geometry": {"coordinates": [-48.01954646140602, -9.249141792303558], "type": "Point"}, "id": "37", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.285030765036694, -8.989666392664521, -48.285030765036694, -8.989666392664521], "geometry": {"coordinates": [-48.285030765036694, -8.989666392664521], "type": "Point"}, "id": "38", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.544506164675724, -9.04975543258093, -48.544506164675724, -9.04975543258093], "geometry": {"coordinates": [-48.544506164675724, -9.04975543258093], "type": "Point"}, "id": "39", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.78322353234362, -8.518786825319575, -48.78322353234362, -8.518786825319575], "geometry": {"coordinates": [-48.78322353234362, -8.518786825319575], "type": "Point"}, "id": "40", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.037573173380906, -8.374026865520953, -48.037573173380906, -8.374026865520953], "geometry": {"coordinates": [-48.037573173380906, -8.374026865520953], "type": "Point"}, "id": "41", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.00534359742575, -10.00626369525031, -48.00534359742575, -10.00626369525031], "geometry": {"coordinates": [-48.00534359742575, -10.00626369525031], "type": "Point"}, "id": "42", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.45328007680261, -9.265529712280763, -48.45328007680261, -9.265529712280763], "geometry": {"coordinates": [-48.45328007680261, -9.265529712280763], "type": "Point"}, "id": "43", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.73078218841657, -8.875497216823348, -48.73078218841657, -8.875497216823348], "geometry": {"coordinates": [-48.73078218841657, -8.875497216823348], "type": "Point"}, "id": "44", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.368609156920364, -12.962644459137621, -48.368609156920364, -12.962644459137621], "geometry": {"coordinates": [-48.368609156920364, -12.962644459137621], "type": "Point"}, "id": "45", "properties": {"Tipo": "Destino", "__folium_color": "Blue", "id": null}, "type": "Feature"}, {"bbox": [-48.67670205249177, -12.81624570734128, -48.67670205249177, -12.81624570734128], "geometry": {"coordinates": [-48.67670205249177, -12.81624570734128], "type": "Point"}, "id": "46", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.38608960489605, -12.645811339578374, -48.38608960489605, -12.645811339578374], "geometry": {"coordinates": [-48.38608960489605, -12.645811339578374], "type": "Point"}, "id": "47", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.84856582964382, -12.829356043323042, -47.84856582964382, -12.829356043323042], "geometry": {"coordinates": [-47.84856582964382, -12.829356043323042], "type": "Point"}, "id": "48", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.99714963743711, -11.20804449357849, -47.99714963743711, -11.20804449357849], "geometry": {"coordinates": [-47.99714963743711, -11.20804449357849], "type": "Point"}, "id": "49", "properties": {"Tipo": "Destino", "__folium_color": "Blue", "id": null}, "type": "Feature"}, {"bbox": [-48.04904471736491, -10.902136654004046, -48.04904471736491, -10.902136654004046], "geometry": {"coordinates": [-48.04904471736491, -10.902136654004046], "type": "Point"}, "id": "50", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.48605591675698, -10.631189710380966, -48.48605591675698, -10.631189710380966], "geometry": {"coordinates": [-48.48605591675698, -10.631189710380966], "type": "Point"}, "id": "51", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.153927405219015, -10.329651982800442, -48.153927405219015, -10.329651982800442], "geometry": {"coordinates": [-48.153927405219015, -10.329651982800442], "type": "Point"}, "id": "52", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.467819822173475, -10.399573774703173, -47.467819822173475, -10.399573774703173], "geometry": {"coordinates": [-47.467819822173475, -10.399573774703173], "type": "Point"}, "id": "53", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.57707262202148, -11.22333988555721, -47.57707262202148, -11.22333988555721], "geometry": {"coordinates": [-47.57707262202148, -11.22333988555721], "type": "Point"}, "id": "54", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.86550001362025, -11.638500524979671, -47.86550001362025, -11.638500524979671], "geometry": {"coordinates": [-47.86550001362025, -11.638500524979671], "type": "Point"}, "id": "55", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.47185305277674, -8.49966758534618, -48.47185305277674, -8.49966758534618], "geometry": {"coordinates": [-48.47185305277674, -8.49966758534618], "type": "Point"}, "id": "56", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.28175318104121, -9.887178143415975, -48.28175318104121, -9.887178143415975], "geometry": {"coordinates": [-48.28175318104121, -9.887178143415975], "type": "Point"}, "id": "57", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.9299591655306, -11.187286461607364, -47.9299591655306, -11.187286461607364], "geometry": {"coordinates": [-47.9299591655306, -11.187286461607364], "type": "Point"}, "id": "58", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.07887985471455, -12.918943339198416, -47.07887985471455, -12.918943339198416], "geometry": {"coordinates": [-47.07887985471455, -12.918943339198416], "type": "Point"}, "id": "59", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.33965716496064, -13.000882939084418, -48.33965716496064, -13.000882939084418], "geometry": {"coordinates": [-48.33965716496064, -13.000882939084418], "type": "Point"}, "id": "60", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.72736803842146, -9.479118935983607, -48.72736803842146, -9.479118935983607], "geometry": {"coordinates": [-48.72736803842146, -9.479118935983607], "type": "Point"}, "id": "61", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.503075348366245, -10.510252147534768, -48.503075348366245, -10.510252147534768], "geometry": {"coordinates": [-48.503075348366245, -10.510252147534768], "type": "Point"}, "id": "62", "properties": {"Tipo": "Destino", "__folium_color": "Blue", "id": null}, "type": "Feature"}, {"bbox": [-50.223765085966406, -10.903580001902762, -50.223765085966406, -10.903580001902762], "geometry": {"coordinates": [-50.223765085966406, -10.903580001902762], "type": "Point"}, "id": "63", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-50.1089248365159, -11.718945773001385, -50.1089248365159, -11.718945773001385], "geometry": {"coordinates": [-50.1089248365159, -11.718945773001385], "type": "Point"}, "id": "64", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.31652711530738, -11.53520137388057, -49.31652711530738, -11.53520137388057], "geometry": {"coordinates": [-49.31652711530738, -11.53520137388057], "type": "Point"}, "id": "65", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.17489080765175, -10.872955935382626, -49.17489080765175, -10.872955935382626], "geometry": {"coordinates": [-49.17489080765175, -10.872955935382626], "type": "Point"}, "id": "66", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.14426674113161, -10.704523569521879, -49.14426674113161, -10.704523569521879], "geometry": {"coordinates": [-49.14426674113161, -10.704523569521879], "type": "Point"}, "id": "67", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.88300517363169, -10.469101058148329, -48.88300517363169, -10.469101058148329], "geometry": {"coordinates": [-48.88300517363169, -10.469101058148329], "type": "Point"}, "id": "68", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.97870538150711, -10.587769315913857, -48.97870538150711, -10.587769315913857], "geometry": {"coordinates": [-48.97870538150711, -10.587769315913857], "type": "Point"}, "id": "69", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.8743921549229, -10.696867552891842, -48.8743921549229, -10.696867552891842], "geometry": {"coordinates": [-48.8743921549229, -10.696867552891842], "type": "Point"}, "id": "70", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.65523867888818, -10.989710188990646, -48.65523867888818, -10.989710188990646], "geometry": {"coordinates": [-48.65523867888818, -10.989710188990646], "type": "Point"}, "id": "71", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.390149103073256, -11.19259462968655, -48.390149103073256, -11.19259462968655], "geometry": {"coordinates": [-48.390149103073256, -11.19259462968655], "type": "Point"}, "id": "72", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.10879049191951, -11.477781249155315, -48.10879049191951, -11.477781249155315], "geometry": {"coordinates": [-48.10879049191951, -11.477781249155315], "type": "Point"}, "id": "73", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.56528048348528, -11.620374558889699, -48.56528048348528, -11.620374558889699], "geometry": {"coordinates": [-48.56528048348528, -11.620374558889699], "type": "Point"}, "id": "74", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.80644500733136, -12.18117777703969, -48.80644500733136, -12.18117777703969], "geometry": {"coordinates": [-48.80644500733136, -12.18117777703969], "type": "Point"}, "id": "75", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.127997705792794, -12.336212113797878, -49.127997705792794, -12.336212113797878], "geometry": {"coordinates": [-49.127997705792794, -12.336212113797878], "type": "Point"}, "id": "76", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.04378152286242, -12.747723007662211, -49.04378152286242, -12.747723007662211], "geometry": {"coordinates": [-49.04378152286242, -12.747723007662211], "type": "Point"}, "id": "77", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.81321119418083, -12.491246450556073, -49.81321119418083, -12.491246450556073], "geometry": {"coordinates": [-49.81321119418083, -12.491246450556073], "type": "Point"}, "id": "78", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.909801231836816, -11.411748105721275, -48.909801231836816, -11.411748105721275], "geometry": {"coordinates": [-48.909801231836816, -11.411748105721275], "type": "Point"}, "id": "79", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.995931418924705, -11.178239598505238, -48.995931418924705, -11.178239598505238], "geometry": {"coordinates": [-48.995931418924705, -11.178239598505238], "type": "Point"}, "id": "80", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.26662866261577, -10.883482958248928, -47.26662866261577, -10.883482958248928], "geometry": {"coordinates": [-47.26662866261577, -10.883482958248928], "type": "Point"}, "id": "81", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.75661372693796, -10.355217810776582, -47.75661372693796, -10.355217810776582], "geometry": {"coordinates": [-47.75661372693796, -10.355217810776582], "type": "Point"}, "id": "82", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.27045667093079, -11.626116571362228, -47.27045667093079, -11.626116571362228], "geometry": {"coordinates": [-47.27045667093079, -11.626116571362228], "type": "Point"}, "id": "83", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.703021610527706, -11.94766926982366, -47.703021610527706, -11.94766926982366], "geometry": {"coordinates": [-47.703021610527706, -11.94766926982366], "type": "Point"}, "id": "84", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.94042529835695, -11.752919346797169, -48.94042529835695, -11.752919346797169], "geometry": {"coordinates": [-48.94042529835695, -11.752919346797169], "type": "Point"}, "id": "85", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.2007298637781, -11.977814835304418, -49.2007298637781, -11.977814835304418], "geometry": {"coordinates": [-49.2007298637781, -11.977814835304418], "type": "Point"}, "id": "86", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.44189438762418, -9.358500145754032, -49.44189438762418, -9.358500145754032], "geometry": {"coordinates": [-49.44189438762418, -9.358500145754032], "type": "Point"}, "id": "87", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.48591648324688, -9.57861062386751, -49.48591648324688, -9.57861062386751], "geometry": {"coordinates": [-49.48591648324688, -9.57861062386751], "type": "Point"}, "id": "88", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.68497291562776, -9.727902948153174, -49.68497291562776, -9.727902948153174], "geometry": {"coordinates": [-49.68497291562776, -9.727902948153174], "type": "Point"}, "id": "89", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.862975302276055, -9.29725201271376, -49.862975302276055, -9.29725201271376], "geometry": {"coordinates": [-49.862975302276055, -9.29725201271376], "type": "Point"}, "id": "90", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-49.61415476179995, -9.082883547072807, -49.61415476179995, -9.082883547072807], "geometry": {"coordinates": [-49.61415476179995, -9.082883547072807], "type": "Point"}, "id": "91", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-48.79663573602415, -9.839872191367396, -48.79663573602415, -9.839872191367396], "geometry": {"coordinates": [-48.79663573602415, -9.839872191367396], "type": "Point"}, "id": "92", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}, {"bbox": [-47.85769707150622, -7.550603593727329, -47.85769707150622, -7.550603593727329], "geometry": {"coordinates": [-47.85769707150622, -7.550603593727329], "type": "Point"}, "id": "93", "properties": {"Tipo": "Origem", "__folium_color": "Green", "id": null}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_7dd1999efa86b815ed90350696f6468d.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["id", "Tipo"];
+    let aliases = ["id", "Tipo"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+    geo_json_7dd1999efa86b815ed90350696f6468d.bindPopup(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["id", "Tipo"];
+    let aliases = ["id", "Tipo"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "className": "foliumpopup",
+});
+                     
+    
+            geo_json_7dd1999efa86b815ed90350696f6468d.addTo(map_6024c1d3fdd09f8141401c025ea713d5);
+        
+    
+            var measure_control_3ab3dfa94fa59062115390ac9c7a6560 = new L.Control.Measure(
+                {
+  "position": "topright",
+  "primaryLengthUnit": "meters",
+  "secondaryLengthUnit": "miles",
+  "primaryAreaUnit": "sqmeters",
+  "secondaryAreaUnit": "acres",
+});
+            map_6024c1d3fdd09f8141401c025ea713d5.addControl(measure_control_3ab3dfa94fa59062115390ac9c7a6560);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+</script>
+</html>
